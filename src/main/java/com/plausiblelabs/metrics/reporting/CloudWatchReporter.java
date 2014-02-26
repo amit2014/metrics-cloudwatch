@@ -82,6 +82,16 @@ public class CloudWatchReporter extends AbstractPollingReporter implements Metri
         private boolean sendGC;
 
         /**
+         * Creates an Enabler that sends values in the give namespace to AWS. Uses the default
+         * credential chain to retrieve AWS credentials.
+         * @param namespace
+         */
+        public Enabler(String namespace) {
+            this.namespace = namespace;
+            this.client = new AmazonCloudWatchClient();
+        }
+
+        /**
          * Creates an Enabler that sends values in the given namespace to the given AWS account
          *
          * @param namespace the namespace. Must be non-null and not empty.
