@@ -21,10 +21,6 @@ import java.util.concurrent.TimeUnit;
 public class RemoteCloudWatchTest {
     @Test
     public void testSendingToAmazon() throws IOException {
-        URL props = Resources.getResource("aws_creds.properties");
-        InputStream is = Resources.newInputStreamSupplier(props).getInput();
-        AWSCredentials creds = new PropertiesCredentials(is);
-
         Timer timer = Metrics.newTimer(CloudWatchReporterTest.class, "TestTimer", TimeUnit.MINUTES, TimeUnit.MINUTES);
         for (int i = 0; i < 100; i++) {
             for (int j = 0; j < 50; j++) {
@@ -61,8 +57,7 @@ public class RemoteCloudWatchTest {
                 return Double.NaN;
             }
         });
-        new CloudWatchReporter.Enabler("cxabf", creds).withEndpoint("monitoring.us-west-2.amazonaws.com")
+        new CloudWatchReporter.Enabler("cxabf").withEndpoint("monitoring.us-west-2.amazonaws.com")
             .withInstanceIdDimension("test").build().run();
-
     }
 }
