@@ -10,7 +10,7 @@
 
     <groupId>com.plausiblelabs.metrics</groupId>
     <artifactId>metrics-cloudwatch</artifactId>
-    <version>2.1.2.5</version>
+    <version>2.1.2.6-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Metrics for CloudWatch</name>
@@ -45,7 +45,7 @@
         <connection>scm:git:git://github.com/appuri/metrics-cloudwatch.git</connection>
         <developerConnection>scm:git:git@github.com:appuri/metrics-cloudwatch.git</developerConnection>
         <url>https://github.com/appuri/metrics-cloudwatch/</url>
-      <tag>v2.1.2.5</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <developers>
