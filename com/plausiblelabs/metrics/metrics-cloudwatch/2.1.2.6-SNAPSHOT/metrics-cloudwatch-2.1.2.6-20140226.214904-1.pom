@@ -10,7 +10,7 @@
 
     <groupId>com.plausiblelabs.metrics</groupId>
     <artifactId>metrics-cloudwatch</artifactId>
-    <version>2.1.2.5-SNAPSHOT</version>
+    <version>2.1.2.6-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Metrics for CloudWatch</name>
@@ -36,6 +36,7 @@
     <properties>
         <aws-sdk.version>1.7.1</aws-sdk.version>
         <maven-deploy-plugin.version>2.8.1</maven-deploy-plugin.version>
+        <maven-release-plugin.version>2.4.2</maven-release-plugin.version>
         <github.global.server>github</github.global.server>
         <site-maven-plugin.version>0.9</site-maven-plugin.version>
     </properties>
@@ -44,7 +45,8 @@
         <connection>scm:git:git://github.com/appuri/metrics-cloudwatch.git</connection>
         <developerConnection>scm:git:git@github.com:appuri/metrics-cloudwatch.git</developerConnection>
         <url>https://github.com/appuri/metrics-cloudwatch/</url>
-    </scm>
+      <tag>HEAD</tag>
+  </scm>
 
     <developers>
         <developer>
@@ -60,6 +62,21 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${maven-deploy-plugin.version}</version>
@@ -77,8 +94,8 @@
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
                     <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
                     <includes><include>**/*</include></includes>
-                    <repositoryName>metrics-cloudwatch</repositoryName>    <!-- github repo name -->
-                    <repositoryOwner>appuri</repositoryOwner>              <!-- github username  -->
+                    <repositoryName>metrics-cloudwatch</repositoryName>        <!-- github repo name -->
+                    <repositoryOwner>appuri</repositoryOwner>                  <!-- github username  -->
                 </configuration>
                 <executions>
                     <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
