@@ -26,6 +26,5 @@ Follow these steps:
   </servers>
 </settings>
 ```
-
-- Prepare the release using `mvn release:prepare`
+- Prepare the release using `mvn clean deploy` and `mvn release:prepare`
 - Perform the release using `mvn release:perform`
