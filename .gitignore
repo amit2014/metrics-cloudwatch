@@ -1,4 +1,5 @@
-src/test/resources/aws_creds.properties
+aws_creds.properties
 .idea/*
 target/*
 *.iml
+release.properties
